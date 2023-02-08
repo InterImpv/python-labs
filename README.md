@@ -14,4 +14,30 @@ At this point:
 10. Switched to `master` branch using `git checkout master`
 11. Modified `README.md`
 12. Will commit everything in a moment
-13. Displayed project history using ```git log``` & ```git log --pretty=oneline```
+13. Displayed project history using ```git log``` & ```git log --pretty=oneline```:
+
+```console
+krypton@argon:$ git log
+commit e6ef1fcf02b78b7b1baa85c632c6bde748e17b01 (HEAD -> master)
+Author: InterImpv <chaoticchloride@gmail.com>
+Date:   Wed Feb 8 17:11:19 2023 +0200
+
+    feat: added a basic description & a gitignore for python
+```
+
+```console
+krypton@argon:$ git log --pretty=oneline 
+e6ef1fcf02b78b7b1baa85c632c6bde748e17b01 (HEAD -> master) feat: added a basic description & a gitignore for python
+```
+
+14. Merged `first_branch` into `master` using ```git merge master first_branch``` & resolved a conflict
+15. Commited all the changes
+16. Displayed current project history with ```git log --pretty=oneline``` for simplicity:
+
+```console
+krypton@argon:$ git log --pretty=oneline 
+386c5f7e2e2a070aba59a2761c448ef4d67e9787 (HEAD -> master) merge: branch 'first_branch' into 'master'
+74acd19938b1000d5f19301d2463debdbd22f7ee feat: new cool things in README.md
+0093ccac88c028d31167db017f89863ea4a1757f (first_branch) feat: new cool stuff in README.md
+e6ef1fcf02b78b7b1baa85c632c6bde748e17b01 feat: added a basic description & a gitignore for python
+```
