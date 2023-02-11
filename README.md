@@ -41,3 +41,5 @@ krypton@argon:$ git log --pretty=oneline
 0093ccac88c028d31167db017f89863ea4a1757f (first_branch) feat: new cool stuff in README.md
 e6ef1fcf02b78b7b1baa85c632c6bde748e17b01 feat: added a basic description & a gitignore for python
 ```
+
+17. Added one *lightweight* tag & one *annotated* tag with ```git tag v0.1 e6ef1fcf``` & ```git tag -a v0.2 cf9c345a -m "This is an annotated tag."``` respectively
