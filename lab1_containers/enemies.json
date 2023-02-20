@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Sewer Rat",
+        "hp": 4,
+        "max_hp": 4,
+        "damage": 2,
+        "defence": 0,
+        "attack_weight": 10,
+        "defend_weight": 1,
+        "heal_weight": 1
+    },
+    {
+        "name": "Plague Rat",
+        "hp": 5,
+        "max_hp": 5,
+        "damage": 3,
+        "defence": 0,
+        "attack_weight": 15,
+        "defend_weight": 1,
+        "heal_weight": 1
+    },
+    {
+        "name": "Enraged Rat",
+        "hp": 5,
+        "max_hp": 5,
+        "damage": 3,
+        "defence": 1,
+        "attack_weight": 15,
+        "defend_weight": 1,
+        "heal_weight": 1
+    },
+    {
+        "name": "Giant Rat",
+        "hp": 8,
+        "max_hp": 8,
+        "damage": 5,
+        "defence": 2,
+        "attack_weight": 15,
+        "defend_weight": 5,
+        "heal_weight": 1
+    },
+    {
+        "name": "Frail Skeleton",
+        "hp": 4,
+        "max_hp": 4,
+        "damage": 3,
+        "defence": 1,
+        "attack_weight": 15,
+        "defend_weight": 1,
+        "heal_weight": 1
+    },
+    {
+        "name": "Skeleton",
+        "hp": 5,
+        "max_hp": 5,
+        "damage": 3,
+        "defence": 1,
+        "attack_weight": 15,
+        "defend_weight": 5,
+        "heal_weight": 1
+    },
+    {
+        "name": "Armored Skeleton",
+        "hp": 5,
+        "max_hp": 5,
+        "damage": 3,
+        "defence": 3,
+        "attack_weight": 15,
+        "defend_weight": 10,
+        "heal_weight": 1
+    },
+    {
+        "name": "Zombie",
+        "hp": 8,
+        "max_hp": 8,
+        "damage": 2,
+        "defence": 1,
+        "attack_weight": 20,
+        "defend_weight": 1,
+        "heal_weight": 20
+    },
+    {
+        "name": "Bandit",
+        "hp": 8,
+        "max_hp": 8,
+        "damage": 6,
+        "defence": 3,
+        "attack_weight": 25,
+        "defend_weight": 15,
+        "heal_weight": 5
+    },
+    {
+        "name": "Imp",
+        "hp": 3,
+        "max_hp": 3,
+        "damage": 8,
+        "defence": 1,
+        "attack_weight": 5,
+        "defend_weight": 20,
+        "heal_weight": 15
+    }
+]

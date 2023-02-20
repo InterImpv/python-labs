@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 
-"""The famous Vikings restoraunt from the Monthy Python sketch.
+# The famous Vikings restoraunt from the Monthy Python sketch.
 
-See the sketch origins video first:
-https://www.youtube.com/watch?v=zLih-WQwBSc
-"""
+# See the sketch origins video first:
+# https://www.youtube.com/watch?v=zLih-WQwBSc
 
-import random
 
 DEF_CHOICE = 8      # how many times to repeat a dish
 MENU = ['spam', 'egg', 'sausage', 'bacon']  # that's all combinations
@@ -17,31 +15,30 @@ FORBIDDEN = {'not', 'without', 'no'}
 
 SONG = ', '.join([PREFERED.capitalize()] + [PREFERED] * DEF_CHOICE) + '!'
 
-D_WELCOME = ('Welcome to the Vikings restaurant.\n'
-             'What would you like to eat?')
-D_CHOICE = '> '
-D_PROMOTE = "We highly recommend {dishes}" + f', and {PREFERED}...'
-D_GOOD = "That's a perfect choice. Let's have more {dishes}" + f', and {PREFERED}!'
-D_BAD = "Disgusting. Who eats {dishes}?"
-D_UNAVAILABLE = "That's not on our menu.\nWe have {dishes}."
+D_WELCOME = "Waitress: \"Welcome to the Vikings restaurant. What would you like to eat?\""
+D_PROMOTE = "Waitress: \"We highly recommend {dishes}" + f", and {PREFERED}...\""
+D_GOOD = "Waitress: \"That\'s a perfect choice. Let\'s have more {dishes}" + f", and {PREFERED}!\""
+D_BAD = "Waitress: \"Disgusting. Who eats {dishes}?\""
+D_UNAVAILABLE = "Waitress: \"That\'s not on our menu. We have {dishes}.\""
 
+def promote(num_choice=DEF_CHOICE):
+    print(D_PROMOTE.format(dishes=get_dishes(num_choice)))
+    return
 
-def dialog(num_choice=DEF_CHOICE):
-    """User dialog logic."""
+# User dialog logic
+def dialog(args):
+    entry = args.dish.lower().strip()
+    words = args.dish.lower().split()
+
     print(D_WELCOME)
-
-    entry = input(D_CHOICE).strip()   # user entry
-    words = entry.lower().split()
-
-    def promote():
-        print(D_PROMOTE.format(dishes=get_dishes(num_choice)))
+    print("You: \"" + args.dish.strip() + "\"")
     
     if set(words) & set(MENU_MULTI):
         # user named something on the menu - do further check
         if set(words) & set(FORBIDDEN):
             # user asked not to put common dishes - blame
             print(D_BAD.format(dishes=entry))
-            promote()
+            promote(args.amount)
         else:
             # user asked for what's on menu - compliment
             print(D_GOOD.format(dishes=entry))
@@ -50,15 +47,14 @@ def dialog(num_choice=DEF_CHOICE):
 
     if not words:
         # user haven't selected anything - promote a good menu
-        promote()
+        promote(args.amount)
         return
     
-    print(D_UNAVAILABLE.format(dishes=get_dishes(num_choice)))
+    print(D_UNAVAILABLE.format(dishes=get_dishes(args.amount)))
     return
 
-
+# Form a random combination of dishes
 def get_dishes(number):
-    """Form a random combination of dishes"""
     sel = list(MENU)
 
     res = []
@@ -71,27 +67,26 @@ def get_dishes(number):
     
     return ''.join(res)
 
-
-TIP = """Next time call "{script} num" to set number of dishes."""
-
 def main(args):
-    script, *args = args
-
-    """Gets called when run as a script."""
-    if len(args) > 1:
-        exit('Too many arguments. ' + TIP.format(script=script))
+    # command-line argument parser
+    p = argparse.ArgumentParser()
+    # available arguments: --* are optional, others are mandatory
+    p.add_argument('dish',
+        help='dish you want to order'
+    )
+    p.add_argument('--amount', '-a',
+        type=int,
+        default=DEF_CHOICE,
+        help='amount of dishes you want to order'
+    )
+    args = p.parse_args()
     
-    num = DEF_CHOICE
-    if len(args) > 0:
-        num = int(args[0])
-    
-    dialog(num)
+    dialog(args)
 
-    if len(args) < 1:
-        print('\tTip:', TIP.format(script=script))
-
+    return 0
 
 if __name__ == '__main__':
     import sys
-
-    main(sys.argv)
+    import argparse
+    import random
+    sys.exit(main(sys.argv))
